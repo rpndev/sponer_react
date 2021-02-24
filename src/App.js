@@ -1,37 +1,28 @@
-import React, { useState } from 'react';
+import { Provider } from 'react-redux';
 import {
-  BrowserRouter as Router,
+  Route,
   Switch,
-  Route
+  BrowserRouter as Router,
 } from "react-router-dom";
-import Home from './components/Home';
-import Result from './components/Result';
 
-export default function App() {
-  const [ history, setHistory ] = useState([]);
-  const [ ingredients, setIngredients ] = useState("");
+import QueryPage from './components/QueryPage';
+import ResultsPage from './components/ResultsPage';
+import Notification from './components/Notification';
 
-  const onChange = value => {
-    setIngredients(value);
-  }
+import { store } from "./data/store";
 
-  const addHistory = () => {
-    if(!history.includes(ingredients)){
-      setHistory([...history, ingredients]);
-    }
-  }
-
+export const App = () => {
   return (
-    <Router>
-      <Switch>
-        <Route exact path="/">
-          <Home onChange={onChange} history={history} addHistory={addHistory} />
-        </Route>
-        <Route path="/result" >
-          <Result ingredients={ingredients}/>
-        </Route>
-      </Switch>
-    </Router>
+    <Provider store={store}>
+      <Router>
+        <Notification />
+        <Switch>
+          <Route exact path="/" component={QueryPage} />
+          <Route path="/results" component={ResultsPage} />
+        </Switch>
+      </Router>
+    </Provider>
   );
 }
 
+export default App;
