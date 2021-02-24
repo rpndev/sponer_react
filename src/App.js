@@ -5,9 +5,9 @@ import {
   BrowserRouter as Router,
 } from "react-router-dom";
 
-import QueryPage from './components/QueryPage';
-import ResultsPage from './components/ResultsPage';
-import Notification from './components/Notification';
+import QueryPage from './components/QueryPage/QueryPage';
+import ResultsPage from './components/ResultsPage/ResultsPage';
+import Notification from './components/Notification/Notification';
 
 import { store } from "./data/store";
 

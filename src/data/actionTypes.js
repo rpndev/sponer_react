@@ -1,3 +1,9 @@
 // notification
 export const SHOW_NOTIFICATION = 'SHOW_NOTIFICATION';
 export const HIDE_NOTIFICATION = 'HIDE_NOTIFICATION';
+
+// ingredients:search
+export const SAVE_INGREDIENT_SEARCH_PARAM = 'SAVE_INGREDIENT_SEARCH_PARAM';
+
+// recipes:results
+export const FETCH_RECIPES_BY_INGREDIENTS = 'FETCH_RECIPES_BY_INGREDIENTS';

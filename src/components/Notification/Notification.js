@@ -3,12 +3,12 @@ import { connect } from 'react-redux';
 
 import {
     clearNotification,
-} from '../data/actions/notificationActions';
+} from '../../data/actions/notificationActions';
 import {
     isNotificationOpen,
     getNotificationType,
     getNotificationMessage,
-} from '../data/selectors/notificationSelectors';
+} from '../../data/selectors/notificationSelectors';
 
 import MuiAlert from '@material-ui/lab/Alert';
 import Snackbar from "@material-ui/core/Snackbar";
