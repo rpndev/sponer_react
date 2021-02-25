@@ -2,23 +2,23 @@ import { Provider } from 'react-redux';
 import {
   Route,
   Switch,
-  BrowserRouter as Router,
+  Router,
 } from "react-router-dom";
 
-import QueryPage from './components/QueryPage/QueryPage';
-import ResultsPage from './components/ResultsPage/ResultsPage';
 import Notification from './components/Notification/Notification';
+import IngredientQueryPage from './components/IngredientQueryPage/IngredientQueryPage';
+import IngredientRecipesPage from './components/IngredientRecipesPage/IngredientRecipesPage';
 
-import { store } from "./data/store";
+import { store, history } from "./data/store";
 
 export const App = () => {
   return (
     <Provider store={store}>
-      <Router>
+      <Router history={history}>
         <Notification />
         <Switch>
-          <Route exact path="/" component={QueryPage} />
-          <Route path="/results" component={ResultsPage} />
+          <Route exact path="/" component={IngredientQueryPage} />
+          <Route path="/results/:ingredient/recipes" component={IngredientRecipesPage} />
         </Switch>
       </Router>
     </Provider>

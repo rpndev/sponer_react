@@ -25,6 +25,20 @@
     width: 80%;
 }
 
+.recent-searches-title {
+    display: flex;
+    align-items: center;
+    text-decoration: underline;
+}
+
+.recent-searches-icon {
+    margin-right: 10px;
+}
+
+.recent-search-item {
+    cursor: pointer;
+}
+
 .search-button {
     width: 80%;
 }

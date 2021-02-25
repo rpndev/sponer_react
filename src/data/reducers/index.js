@@ -1,10 +1,10 @@
 import { combineReducers } from "redux";
-import { queryReducer } from "./queryReducer";
-import { resultsReducer } from "./resultsReducer";
+import { ingredientQueryReducer } from "./ingredientQueryReducer";
+import { ingredientRecipesReducer } from "./ingredientRecipesReducer";
 import { notificationReducer } from "./notificationReducer";
 
 export const createRootReducer = () => combineReducers({
-    query: queryReducer,
-    results: resultsReducer,
+    query: ingredientQueryReducer,
+    results: ingredientRecipesReducer,
     notification: notificationReducer,
 })

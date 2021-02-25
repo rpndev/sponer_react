@@ -1,4 +1,4 @@
-const worked = [
+const workLog = [
     {
         date: '24.02.2021',
         hours: [
@@ -6,4 +6,10 @@ const worked = [
             { from: '23:00', to: '00:00' },
         ],
     },
+    {
+        date: '25.02.2021',
+        hours: [
+            { from: '20:00', to: '' },
+        ]
+    }
 ]
