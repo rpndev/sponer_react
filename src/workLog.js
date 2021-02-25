@@ -9,7 +9,7 @@ const workLog = [
     {
         date: '25.02.2021',
         hours: [
-            { from: '20:00', to: '' },
+            { from: '20:00', to: '22:45' },
         ]
     }
 ]
