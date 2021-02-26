@@ -50,8 +50,8 @@ const IngredientQueryPage = ({
       setValidationError('');
       saveToRecentSearches(ingredient);
       fetchRecipes(ingredient);
+      history.push(`/results/${ingredient}/recipes`);
     }
-    history.push(`/results/${ingredient}/recipes`);
   }
 
   return (
