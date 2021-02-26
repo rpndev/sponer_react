@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { connect } from "react-redux"
 import {
-  Link,
+  Chip,
   Paper,
   Button,
   Tooltip,
@@ -9,14 +9,14 @@ import {
   Typography,
 } from "@material-ui/core"
 
-import { Search } from '@material-ui/icons';
+import { Search, YoutubeSearchedForOutlined } from '@material-ui/icons';
 
 import { history } from '../../data/store';
 import { fetchRecipes } from '../../data/actions/ingredientRecipesActions';
 import { saveToRecentSearches } from '../../data/actions/ingredientQueryActions';
 import { getRecentSearchIngredients } from '../../data/selectors/ingredientQuerySelectors';
 
-import './ingredientQueryPage.css';
+import './ingredientQueryPage.scss';
 
 const IngredientQueryPage = ({
   saveToRecentSearches,
@@ -60,8 +60,8 @@ const IngredientQueryPage = ({
         <TextField
           value={searchIngredient}
           label='Search by ingredient'
-          className='ingredient-input'
           onChange={handleSearchIngredientChange}
+          className={`ingredient-input ${validationError ? '' : 'without-error'}`}
         />
         {
           validationError &&
@@ -75,22 +75,27 @@ const IngredientQueryPage = ({
         {
           (searches && searches.length > 0) &&
           <div className='recent-searches-wrapper'>
-            <Typography variant='body1' className='recent-searches-title'>
-              <Search className='recent-searches-icon' />Recent searches
+            <Typography
+              variant='body1'
+              className='recent-searches-title'
+            >
+              <YoutubeSearchedForOutlined color='secondary' className='recent-searches-icon' />Recent searches
             </Typography>
             {
               searches.map((x, i) => {
                 return (
-                  <div key={i}>-
-                    <Tooltip title={`Search again for ${x}`}>
-                      <Link
-                        className='recent-search-item'
-                        onClick={() => handleSearchAgain(x)}
-                      >
-                        {x}
-                      </Link>
-                    </Tooltip>
-                  </div>
+                  <Tooltip
+                    key={i}
+                    className='recent-search-item'
+                    title={`Search again for ${x}`}
+                  >
+                    <Chip
+                      label={x}
+                      color='primary'
+                      variant='outlined'
+                      onClick={() => handleSearchAgain(x)}
+                    />
+                  </Tooltip>
                 )
               })
             }
@@ -100,6 +105,7 @@ const IngredientQueryPage = ({
           color='primary'
           variant='outlined'
           className='search-button'
+          startIcon={<Search color='secondary' />}
           onClick={() => handleRequestQuery(searchIngredient)}
         >
           Search

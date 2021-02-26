@@ -8,21 +8,39 @@ import {
 
 import { ArrowRight } from '@material-ui/icons';
 
-import './ingredientRecipesPage.css';
+import './ingredientRecipesPage.scss';
 
 const RecipeAccordionDetails = ({
     recipe
 }) => {
+    // checks if both used and missed ingredients exists
+    // if yes - takes them both
+    // if some of them exists - takes the existing one
+    // if none exists - returns empty collection
+    const getIngredientsCollection = () => {
+        if (recipe.usedIngredients) {
+            if (recipe.missedIngredients) {
+                return recipe.usedIngredients.concat(recipe.missedIngredients);
+            } else {
+                return recipe.usedIngredients;
+            }
+        } else if (recipe.missedIngredients) {
+            return recipe.missedIngredients;
+        } else {
+            return [];
+        }
+    }
+
     return (
-        <AccordionDetails>
-            <img src={recipe.image} alt='recipe-image' className='recipe-image' />
+        <AccordionDetails className='accordion-details'>
+            <div className='image-wrapper'>
+                <img src={recipe.image} alt='recipe-image' className='recipe-image' />
+            </div>
             <List component='ul'>
                 {
-                    (recipe.usedIngredients && recipe.usedIngredients.length > 0) &&
-                    (recipe.missedIngredients && recipe.missedIngredients.length > 0) &&
-                    recipe.usedIngredients.concat(recipe.missedIngredients).map(ingredientInfo => {
+                    getIngredientsCollection().map((ingredientInfo, i) => {
                         return (
-                            <ListItem>
+                            <ListItem key={i}>
                                 <ListItemIcon>
                                     <ArrowRight />
                                 </ListItemIcon>

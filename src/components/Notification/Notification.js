@@ -33,7 +33,7 @@ const Notification = ({
             <div className="notification">
                 <Snackbar
                     anchorOrigin={{
-                        vertical: "top",
+                        vertical: "bottom",
                         horizontal: "center"
                     }}
                     onClose={handleClose}

@@ -12,7 +12,6 @@ export const fetchRecipes = input => async dispatch => {
     try {
         dispatch(showNotification(`Successfully fetched recipes with ${input}`, notificationType.success));
         const response = await ingredientsService.getRecipesByIngredients(input);
-        console.log(response);
         dispatch(fetchRecipesByIngredient(response));
     } catch (err) {
         console.log(err);

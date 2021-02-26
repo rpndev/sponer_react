@@ -6,7 +6,7 @@ import {
 
 import { ExpandMore, ThumbUpAlt } from '@material-ui/icons';
 
-import './ingredientRecipesPage.css';
+import './ingredientRecipesPage.scss';
 
 const RecipeAccordionSummary = ({
     recipe
@@ -14,16 +14,18 @@ const RecipeAccordionSummary = ({
     return (
         <AccordionSummary
             expandIcon={<ExpandMore />}
-            className='accordion-summary'
+            className='accordion-summary-expand-item'
         >
-            <Typography>{recipe.title}</Typography>
-            <Chip
-                color='primary'
-                label={recipe.likes}
-                variant='outlined'
-                style={{ marginLeft: '10px', cursor: 'pointer' }}
-                icon={<ThumbUpAlt style={{ marginLeft: '10px' }} color='primary' />}
-            />
+            <span className='accordion-summary'>
+                <Typography>{recipe.title}</Typography>
+                <Chip
+                    color='primary'
+                    label={recipe.likes}
+                    variant='outlined'
+                    style={{ marginLeft: '10px', cursor: 'pointer' }}
+                    icon={<ThumbUpAlt style={{ marginLeft: '10px' }} color='primary' />}
+                />
+            </span>
         </AccordionSummary>
     )
 }
