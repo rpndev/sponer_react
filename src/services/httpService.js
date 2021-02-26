@@ -4,7 +4,7 @@ const baseUrl = 'https://api.spoonacular.com/recipes/';
 const ingredients = 'findByIngredients';
 
 const buildIngredientsUrl = (param) => {
-    return `${baseUrl}${ingredients}?apiKey=${spoonacular_apiKey}&ingredients=${param}`;
+    return `${baseUrl}${ingredients}?apiKey=${spoonacular_apiKey}&ingredients=${param}&number=100`;
 }
 
 export const httpsSerivce = {

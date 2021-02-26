@@ -20,6 +20,21 @@
             margin-bottom: -30px;
         }
 
+        .show-count-dropdown {
+            margin-left: 10px;
+            @media screen and (max-width: $mobileScreen) {
+                width: 40%;
+            }
+
+            @media screen and (min-width: $mobileScreen) and (max-width: $tabletScreen) {
+                width: 20%;
+            }
+
+            @media screen and (min-width: $tabletScreen) {
+                width: 20%;
+            }
+        }
+
         .accordions-container {
             display: flex;
             flex-wrap: wrap;
