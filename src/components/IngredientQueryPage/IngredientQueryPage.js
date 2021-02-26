@@ -9,16 +9,20 @@ import {
   Typography,
 } from "@material-ui/core"
 
-import { Search, YoutubeSearchedForOutlined } from '@material-ui/icons';
+import { Search, YoutubeSearchedForOutlined, Close } from '@material-ui/icons';
 
 import { history } from '../../data/store';
 import { fetchRecipes } from '../../data/actions/ingredientRecipesActions';
-import { saveToRecentSearches } from '../../data/actions/ingredientQueryActions';
+import {
+  saveToRecentSearches,
+  deleteFromRecentSearches,
+} from '../../data/actions/ingredientQueryActions';
 import { getRecentSearchIngredients } from '../../data/selectors/ingredientQuerySelectors';
 
 import './ingredientQueryPage.scss';
 
 const IngredientQueryPage = ({
+  deleteFromRecentSearches,
   saveToRecentSearches,
   fetchRecipes,
   searches,
@@ -54,6 +58,11 @@ const IngredientQueryPage = ({
     }
   }
 
+  const handleDeleteRecentSearch = (ev, search) => {
+    ev.stopPropagation();
+    deleteFromRecentSearches(search);
+  }
+
   return (
     <div className='query-page-wrapper'>
       <Paper className='paper-container'>
@@ -84,18 +93,22 @@ const IngredientQueryPage = ({
             {
               searches.map((x, i) => {
                 return (
-                  <Tooltip
+                  <Chip
                     key={i}
+                    label={x}
+                    color='primary'
+                    variant='outlined'
                     className='recent-search-item'
-                    title={`Search again for ${x}`}
-                  >
-                    <Chip
-                      label={x}
-                      color='primary'
-                      variant='outlined'
-                      onClick={() => handleSearchAgain(x)}
-                    />
-                  </Tooltip>
+                    onClick={() => handleSearchAgain(x)}
+                    icon={
+                      <Tooltip
+                        key={i}
+                        title='Delete recent search'
+                      >
+                        <Close onClick={ev => handleDeleteRecentSearch(ev, x)} />
+                      </Tooltip>
+                    }
+                  />
                 )
               })
             }
@@ -122,6 +135,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = {
   fetchRecipes,
   saveToRecentSearches,
+  deleteFromRecentSearches,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(IngredientQueryPage);
