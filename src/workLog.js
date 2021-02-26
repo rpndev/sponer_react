@@ -19,6 +19,7 @@ const workLog = [
         hours: [
             { from: '23:20', to: '01:00' },
             { from: '06:00', to: '07:00' },
+            { from: '17:10', to: '' },
         ],
         totalMinutes: '160',
     },

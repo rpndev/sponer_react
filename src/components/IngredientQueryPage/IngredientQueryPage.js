@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { connect } from "react-redux"
 import {
   Chip,
@@ -62,6 +62,20 @@ const IngredientQueryPage = ({
     ev.stopPropagation();
     deleteFromRecentSearches(search);
   }
+
+  const handleEnterClick = ev => {
+    if (ev.key === 'Enter') {
+      handleRequestQuery(searchIngredient);
+    }
+  }
+
+  useEffect(() => {
+    document.addEventListener('keydown', handleEnterClick);
+
+    return () => {
+      document.removeEventListener('keydown', handleEnterClick);
+    }
+  }, [handleEnterClick]);
 
   return (
     <div className='query-page-wrapper'>
