@@ -114,12 +114,10 @@ const IngredientQueryPage = ({
                     variant='outlined'
                     className='recent-search-item'
                     onClick={() => handleSearchAgain(x)}
-                    icon={
-                      <Tooltip
-                        key={i}
-                        title='Delete recent search'
-                      >
-                        <Close onClick={ev => handleDeleteRecentSearch(ev, x)} />
+                    onDelete={ev => handleDeleteRecentSearch(ev, x)}
+                    deleteIcon={
+                      <Tooltip title='Delete recent search'>
+                        <Close />
                       </Tooltip>
                     }
                   />
