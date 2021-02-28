@@ -32,7 +32,7 @@ const getTotalTimeWorked = (log) => {
             total += +amount;
         });
 
-    const hours = Math.ceil(total / 60);
+    const hours = Math.floor(total / 60);
     const minutes = total % 60;
 
     const totalTime = `${hours}:${minutes}`;
